@@ -20,3 +20,6 @@ declare namespace NodeJS {
 declare module '@tarojs/components' {
   export * from '@tarojs/components/types/index.vue3';
 }
+
+declare const CONST_API_HOST: string;
+declare const CONST_TOKEN_KEY: string;

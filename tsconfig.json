@@ -19,11 +19,12 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
+    "noEmit": true,
     "skipLibCheck": true,
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": ["./src", "./types", "components.d.ts"],
+  "include": ["src", "types", "components.d.ts"],
   "compileOnSave": false
 }

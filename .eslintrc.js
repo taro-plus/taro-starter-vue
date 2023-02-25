@@ -27,6 +27,8 @@ module.exports = {
     JSX: false,
     defineAppConfig: false,
     definePageConfig: false,
+    CONST_API_HOST: false,
+    CONST_TOKEN_KEY: false,
   },
   rules: {
     // Customize your rules

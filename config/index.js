@@ -25,7 +25,10 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   plugins: ['@tarojs/plugin-html'],
-  defineConstants: {},
+  defineConstants: {
+    CONST_API_HOST: JSON.stringify('https://test-ryx-admin-api.p.quicknav.cn'),
+    CONST_TOKEN_KEY: JSON.stringify('token'),
+  },
   copy: {
     patterns: [],
     options: {},
@@ -99,7 +102,8 @@ const config = {
     },
   },
   alias: {
-    '@/stores': path.resolve(__dirname, '..', 'src/stores'),
+    '@/stores': path.resolve(__dirname, '..', 'src/stores/index.ts'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils/index.ts'),
   },
 };
 
