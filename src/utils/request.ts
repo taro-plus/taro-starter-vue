@@ -9,6 +9,7 @@ import {
   showLoading as openLoading,
   showToast,
 } from '@tarojs/taro';
+import qs from 'qs';
 
 export const loginPageUrl = '/pages/login/index';
 
@@ -29,40 +30,34 @@ export interface Response {
   msg: string;
 }
 
-export interface Options extends Omit<Parameters<typeof http>[0], 'url'> {
-  secret?: boolean;
+export interface FullRequestParams extends Omit<Parameters<typeof http>[0], 'url'> {
+  secure?: boolean;
   skipErrorHandler?: boolean;
   showLoading?: boolean;
-  params?: Record<string, any>;
-  data?: Record<string, any>;
+  path: string;
+  query?: Record<string, any>;
+  body?: Record<string, any>;
   requestType?: 'form';
 }
 
+export type RequestParams = Omit<FullRequestParams, 'body' | 'method' | 'query' | 'path' | 'skipErrorHandler'>;
+
 export function request<T extends Response>(
-  url: string,
   options: {
     skipErrorHandler: true;
-  } & Omit<Options, 'skipErrorHandler'>,
+  } & Omit<FullRequestParams, 'skipErrorHandler'>,
 ): RequestTask<T>;
 export function request<T extends Response>(
-  url: string,
   options: {
     skipErrorHandler?: false;
-  } & Omit<Options, 'skipErrorHandler'>,
+  } & Omit<FullRequestParams, 'skipErrorHandler'>,
 ): Promise<T['data']>;
-export async function request<T extends Response>(url: string, options: Options) {
+export async function request<T extends Response>(options: FullRequestParams) {
   return new Promise((resolve, reject) => {
-    const {
-      secret = true,
-      skipErrorHandler = false,
-      showLoading = true,
-      params = {},
-      data = {},
-      ...restOptions
-    } = options;
+    const { secure = true, skipErrorHandler = false, showLoading = true, path, query, body, ...restOptions } = options;
 
-    if (secret && !checkToken()) {
-      reject(new Error(`接口${url}未通过鉴权校验`));
+    if (secure && !checkToken()) {
+      reject(new Error(`接口${path}未通过鉴权校验`));
       return;
     }
 
@@ -71,8 +66,8 @@ export async function request<T extends Response>(url: string, options: Options)
     }
 
     http<T>({
-      url: `${CONST_API_HOST}${url}`,
-      data: { ...params, ...data },
+      url: query ? `${CONST_API_HOST}${path}?${qs.stringify(query)}` : `${CONST_API_HOST}${path}`,
+      data: body,
       ...restOptions,
     })
       .then((result) => {

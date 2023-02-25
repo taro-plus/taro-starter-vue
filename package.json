@@ -24,6 +24,7 @@
     "dev:tt": "npm run build:tt -- --watch",
     "dev:weapp": "npm run build:weapp -- --watch",
     "preinstall": "npx only-allow pnpm",
+    "openapi": "tsx openapi.config.ts",
     "prepare": "husky install",
     "type-check": "vue-tsc --noEmit"
   },
@@ -52,7 +53,9 @@
     "@tarojs/taro": "3.6.2",
     "@vueuse/core": "^9.13.0",
     "dayjs": "^1.11.7",
+    "lodash-es": "^4.17.21",
     "pinia": "^2.0.32",
+    "qs": "^6.11.0",
     "taro-plugin-pinia": "^1.0.0",
     "vue": "^3.2.47"
   },
@@ -63,6 +66,7 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@tarojs/cli": "3.6.2",
     "@tarojs/webpack5-runner": "3.6.2",
+    "@types/lodash-es": "^4.17.6",
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "@typescript-eslint/parser": "^5.53.0",

@@ -102,6 +102,7 @@ const config = {
     },
   },
   alias: {
+    '@/services': path.resolve(__dirname, '..', 'src/services'),
     '@/stores': path.resolve(__dirname, '..', 'src/stores/index.ts'),
     '@/utils': path.resolve(__dirname, '..', 'src/utils/index.ts'),
   },
