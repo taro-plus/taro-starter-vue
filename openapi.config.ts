@@ -9,7 +9,6 @@ const templatesDir = path.resolve(cwd, './templates');
 
 const gen = async () => {
   const API_HOST = JSON.parse((config as any).default(merge).defineConstants.CONST_API_HOST);
-  console.log(`${API_HOST}/v3/api-docs/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97`);
 
   await generateApi({
     url: `${API_HOST}/v3/api-docs/%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9D%97`,
