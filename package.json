@@ -75,7 +75,7 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "babel-preset-taro": "3.6.2",
     "css-loader": "6.7.3",
-    "eslint": "^8.34.0",
+    "eslint": "^8.35.0",
     "eslint-config-alloy": "^4.9.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
@@ -103,7 +103,7 @@
     "vue-tsc": "^1.2.0",
     "webpack": "5.75.0"
   },
-  "packageManager": "pnpm@7.27.1",
+  "packageManager": "pnpm@7.28.0",
   "engines": {
     "node": "16.x",
     "pnpm": "7.x"

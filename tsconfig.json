@@ -25,6 +25,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "types", "components.d.ts"],
+  "include": ["./src", "./types", "./components.d.ts"],
   "compileOnSave": false
 }
